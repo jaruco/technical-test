@@ -10,49 +10,49 @@ provider:
 
 plugins:
   - serverless-offline
-  - serverless-aws-documentation
+# - serverless-aws-documentation
 
-custom:
-  documentation:
-    api:
-      info:
-        version: '1.0'
-        title: 'Test API'
-        description: 'API for tech exam'
-        termsOfService: https://www.google.com
-        contact:
-          name: Jorge
-          email: jruiz.jc@gmail.com
+# custom:
+#   documentation:
+#     api:
+#       info:
+#         version: '1.0'
+#         title: 'Test API'
+#         description: 'API for tech exam'
+#         termsOfService: https://www.google.com
+#         contact:
+#           name: Jorge
+#           email: jruiz.jc@gmail.com
     
-    models:
-      -
-        name: MessageResponse
-        contentType: "application/json"
-        schema:
-          type: object
-          properties:
-            message:
-              type: string
-      -
-        name: CreateMovie
-        contentType: "application/json"
-        schema:
-          type: array
-          items:
-            titulo: string
-            id_episodio: number
-            rastrep_apertura: string
-            director: string
-            productor: string
-            fecha_estreno: date
-            personajes: array
-            planetas: array
-            naves_espaciales: array
-            vehiculos: array
-            especies: array
-            fecha_creacion: date
-            fecha_edicion: date
-            url: string
+#     models:
+#       -
+#         name: MessageResponse
+#         contentType: "application/json"
+#         schema:
+#           type: object
+#           properties:
+#             message:
+#               type: string
+#       -
+#         name: CreateMovie
+#         contentType: "application/json"
+#         schema:
+#           type: array
+#           properties:
+#             titulo: string
+#             id_episodio: number
+#             rastrep_apertura: string
+#             director: string
+#             productor: string
+#             fecha_estreno: date
+#             personajes: array
+#             planetas: array
+#             naves_espaciales: array
+#             vehiculos: array
+#             especies: array
+#             fecha_creacion: date
+#             fecha_edicion: date
+#             url: string
     
 functions:
   getMoviesAPI:
