@@ -1,8 +1,8 @@
 # Deploying serverless rest api with Node, AWS Lambda, RDS for Mysql and API Gateway
 
-Repository for exam purpose
+Repository for exam purposes
 
-- database.js file: configuration file to connection to database
+- database.js file: configuration file to setup the connection to database
 - handler.js file: contains all the functions required
 - serverless.yml file: specifications for documentation and application
 
@@ -31,7 +31,11 @@ Repository for exam purpose
 $ serverless config credentials --provider aws --key <your_access_key> --secret <your_secret_key>
 ```
 - Setup a MySQL database in RDS service on AWS Console, in localhost, you can put directly the params in database.js file 
-- Create the schema and the structure of the table to support the operations (setupSchema.sql file)
+- Recreate the schema and the structure of the table to support the operations (setupSchema.sql file)
+- To deploy the project into your AWS account, go to the terminal and enter the following command:
+```sh
+$ serverless deploy
+```
 
 ### Exposed endpoints
 - /dev/starwars/getMoviesAPI
@@ -42,3 +46,9 @@ $ serverless config credentials --provider aws --key <your_access_key> --secret 
     * Get a specific movie in the database
 - /dev/starwars/createMovie
     * Send a request with all the necessary fields to register a new movie
+
+### Run Unit Tests
+- Go to the terminal and enter the following command:
+```sh
+$ yarn test
+```

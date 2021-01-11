@@ -2,58 +2,13 @@ service: rimac-backend-test
 app: rimac-backend-test-app
 org: jaruco3444
 
-frameworkVersion: '2'
-
 provider:
   name: aws
   runtime: nodejs12.x
 
 plugins:
   - serverless-offline
-# - serverless-aws-documentation
 
-# custom:
-#   documentation:
-#     api:
-#       info:
-#         version: '1.0'
-#         title: 'Test API'
-#         description: 'API for tech exam'
-#         termsOfService: https://www.google.com
-#         contact:
-#           name: Jorge
-#           email: jruiz.jc@gmail.com
-    
-#     models:
-#       -
-#         name: MessageResponse
-#         contentType: "application/json"
-#         schema:
-#           type: object
-#           properties:
-#             message:
-#               type: string
-#       -
-#         name: CreateMovie
-#         contentType: "application/json"
-#         schema:
-#           type: array
-#           properties:
-#             titulo: string
-#             id_episodio: number
-#             rastrep_apertura: string
-#             director: string
-#             productor: string
-#             fecha_estreno: date
-#             personajes: array
-#             planetas: array
-#             naves_espaciales: array
-#             vehiculos: array
-#             especies: array
-#             fecha_creacion: date
-#             fecha_edicion: date
-#             url: string
-    
 functions:
   getMoviesAPI:
     handler: handler.getMoviesAPI
@@ -62,15 +17,6 @@ functions:
           path: starwars/getMoviesAPI
           method: get
           cors: true
-          
-          # documentation:
-          #   summary: Gets movies from StarWars API
-          #   description: Make a request to StarWars API's endpoint and fetch all movies.
-          # methodResponses:
-          #   -
-          #     statusCode: '200'
-          #     responseModels:
-          #       "application/json": MessageResponse
   
   getAllMovies:
     handler: handler.getAllMovies
@@ -95,15 +41,6 @@ functions:
           path: starwars/createMovie
           method: post
           cors: true
-          # documentation:
-          #   summay: Register a movie in the database
-          #   description: Add a new movie with all the fields exact as the StarWars API
-          #   requestModels:
-          #     "application/json": CreateMovie
-          #   methodResponses:
-          #     -
-          #       statusCode: '200'
-          #       responseModels:
-          #         "application/json": MessageResponse
+
 
   

@@ -1,10 +1,10 @@
 
 const database = require('serverless-mysql') ({
     config: {
-        host     :  process.env.RDS_LAMBDA_HOSTNAME,
-        database :  process.env.RDS_LAMBDA_DATABASE,
-        user     :  process.env.RDS_LAMBDA_USER,
-        password :  process.env.RDS_LAMBDA_PASSWORD
+        host: 'database-baknd-t.cyrpewedmx9i.us-east-1.rds.amazonaws.com',
+        database: 'schemakp',
+        user: 'admin',
+        password: 'administrator' 
     }
 })
 

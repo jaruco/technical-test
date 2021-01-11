@@ -1,0 +1,234 @@
+swagger: "2.0"
+info:
+  description: "This is a sample app for evaluation purpose."
+  version: "1.0.0"
+  title: "Test Solution"
+  contact:
+    email: "jruiz.jc@gmail.com"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "localhost:3000"
+basePath: "/dev/starwars"
+tags:
+- name: "SWAPI"
+  description: "The StarWars API"
+  externalDocs:
+    description: "Find out more"
+    url: "https://swapi.dev/"
+- name: "Movies"
+  description: "Interact with sample app"
+schemes:
+- "http"
+paths:
+  /getMoviesAPI:
+    post:
+      tags:
+      - "SWAPI"
+      summary: "Get all movies stored in API"
+      description: "Query external API"
+      operationId: "getMoviesAPI"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "Successful query"
+        "400":
+          description: "Request Error"
+  /getAllMovies:
+    get:
+      tags:
+      - "Movies"
+      summary: "Get all the movies in the database"
+      description: "Return the movies stored in the database"
+      operationId: "getAllMovies"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Movie"
+        "204":
+          description: "No content"
+        "400":
+          description: "Request Error"
+  /getMovie/{id_episodio}:
+    get:
+      tags:
+      - "Movies"
+      summary: "Get a movie by ID"
+      description: "Get data from a specific movie"
+      operationId: "getMovieById"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id_episodio"
+        type: integer
+        in: "path"
+        description: "Movie's id to filter by"
+        required: true
+      responses:
+        "200":
+          description: "Successful operation"
+          schema:
+            type: "object"
+            items:
+              $ref: "#/definitions/Movie"
+        "400":
+          description: "Movie not found"
+  /createMovie:
+    post:
+      tags:
+      - "Movies"
+      summary: "Register a new movie"
+      description: "Create a new movie with all the necessary fields"
+      operationId: "createMovie"
+      consumes:
+      - "application/json"
+      - "multipart/form-data"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "titulo"
+        in: "formData"
+        description: "Title of new movie"
+        required: false
+        type: "string"
+      - name: "id_episodio"
+        in: "formData"
+        description: "ID of new movie"
+        required: true
+        type: "integer"
+        format: "int64"
+      - name: "rastreo_apertura"
+        in: "formData"
+        description: "Opening of new movie"
+        required: false
+        type: "string"
+      - name: "director"
+        in: "formData"
+        description: "Director's name"
+        required: false
+        type: "string"
+      - name: "productor"
+        in: "formData"
+        description: "Producer's name"
+        required: false
+        type: "string"
+      - name: "fecha_estreno"
+        in: "formData"
+        description: "Release date"
+        required: false
+        type: "string"
+        format: "date"
+      - name: "personajes"
+        in: "formData"
+        description: "Characters of the movie"
+        required: false
+        type: "array"
+        items:
+          type: "string"
+      - name: "planetas"
+        in: "formData"
+        description: "Planets"
+        required: false
+        type: "array"
+        items:
+          type: "string"
+      - name: "naves_espaciales"
+        in: "formData"
+        description: "Starships"
+        required: false
+        type: "array"
+        items:
+          type: "string"
+      - name: "vehiculos"
+        in: "formData"
+        description: "Vehicles"
+        required: false
+        type: "array"
+        items:
+          type: "string"
+      - name: "especies"
+        in: "formData"
+        description: "Species"
+        required: false
+        type: "array"
+        items:
+          type: "string"
+      - name: "fecha_creacion"
+        in: "formData"
+        description: "Creation date"
+        required: false
+        type: "string"
+        format: "date"
+      - name: "fecha_edicion"
+        in: "formData"
+        description: "Edition date"
+        required: false
+        type: "string"
+        format: "date"
+      - name: "url"
+        in: "formData"
+        description: "URL of Movie"
+        required: false
+        type: "string"
+        
+      responses:
+        "405":
+          description: "Id Episodio is neccesary"
+        "400":
+          description: "Request Error"
+        "200":
+          description: "Successful operation"
+      
+definitions:
+  Movie:
+    type: "object"
+    properties:
+      titulo:
+        type: "string"
+      id_episodio:
+        type: "integer"
+        format: "int64"
+      rastreo_apertura:
+        type: "string"
+      director:
+        type: "string"
+      productor:
+        type: "string"
+      fecha_estreno:
+        type: "string"
+        format: "date"
+      personajes:
+        type: "array"
+        items:
+          type: "string"
+      planetas:
+        type: "array"
+        items:
+          type: "string"
+      naves_especiales:
+        type: "array"
+        items:
+          type: "string"
+      vehiculos:
+        type: "array"
+        items:
+          type: "string"
+      especies:
+        type: "array"
+        items:
+          type: "string"
+      fecha_creacion:
+        type: "string"
+        format: "date"
+      fecha_edicion:
+        type: "string"
+        format: "date"
+      url:
+        type: "string"
+  
